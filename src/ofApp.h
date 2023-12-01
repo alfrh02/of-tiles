@@ -2,6 +2,7 @@
 
 #include <vector>
 #include "ofMain.h"
+#include "ofxGui.h"
 
 #include "tile.h"
 #include "tileMaster.h"
@@ -27,10 +28,15 @@ class ofApp : public ofBaseApp{
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
 
-		const short TILE_SIZE = 8;
-
 		ofLight light;
 		ofEasyCam cam;
 
 		TileMaster tileMaster;
+
+		// gui
+		ofxPanel gui;
+
+		ofxButton increaseButton;
+		ofxButton decreaseButton;
+		//ofxInputField inputField;
 };

@@ -5,6 +5,8 @@ void Tile::setup() {
 }
 
 void Tile::draw(vec3 coords) {
-    mesh.setPosition(coords);
+    vec3 c = vec3(coords.x + TILE_SIZE/2, coords.y, coords.z + TILE_SIZE/2);
+
+    mesh.setPosition(c);
     mesh.draw();
 }

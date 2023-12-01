@@ -10,7 +10,13 @@ void ofApp::setup(){
     light.setAmbientColor(ofColor(75)); //ofFloatColor(0.3, 0.3, 0.3));
     light.setPosition(ofGetWidth() / 2,ofGetHeight() / 2, 500);
 
-    tileMaster.setup(25);
+    tileMaster.setup(28);
+
+    gui.setup();
+
+    gui.add(increaseButton.setup("Increase Tile Count", 16, 16));
+    gui.add(decreaseButton.setup("Decrease Tile Count", 16, 16));
+    //gui.add(inputField.setup(int, 32, 16));
 }
 
 //--------------------------------------------------------------
@@ -29,7 +35,7 @@ void ofApp::draw(){
     ofDrawGrid(1, 10, true, false, true, false);
 
     ofSetColor(33);
-    tileMaster.draw(vec3(0, 0, 0), true);
+    tileMaster.draw(vec3(0, 0, 0));
 
     light.disable();
     ofDisableLighting();
@@ -39,6 +45,14 @@ void ofApp::draw(){
 
     ofSetColor(0, 255, 0);
     ofDrawBitmapString(to_string(ofGetFrameRate()), ofGetWidth()/2, 20);
+
+    gui.draw();
+    if (increaseButton) {
+        tileMaster.increment();
+    }
+    if (decreaseButton) {
+        tileMaster.decrement();
+    }
 }
 
 //--------------------------------------------------------------

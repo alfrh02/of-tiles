@@ -1,5 +1,4 @@
 #include "tileMaster.h"
-#include "math.h"
 
 void TileMaster::setup(int tileNumber) {
     for (int i = 0; i < tileNumber; i++) {
@@ -9,18 +8,17 @@ void TileMaster::setup(int tileNumber) {
     }
 }
 
-void TileMaster::draw(vec3 coords, bool centred) {
+void TileMaster::draw(vec3 coords) {
     int size = tiles.size();
 
-    int x = coords.x;
-    int z = coords.z;
-    if (centred) {
-        x = -(sqrt(size) / 2);
-        z = x;
-    }
+    int x = -(sqrt(size) / 2);
+    int z = x;
 
     for (int i = 0; i < size; i++) {
         vec3 pos = vec3(x * TILE_SIZE, 0, z * TILE_SIZE);
+        if ((int)sqrt(size) % 2 == 1) {
+            pos = vec3(x * TILE_SIZE - (TILE_SIZE / 2), 0, z * TILE_SIZE - (TILE_SIZE / 2));
+        }
 
         //ofSetColor((255/25)*i);
         ofSetColor(33);
@@ -30,14 +28,21 @@ void TileMaster::draw(vec3 coords, bool centred) {
         tiles[i].draw(pos);
 
         x++;
-        if (centred) {
-            if (x >= sqrt(size) / 2) {
-                z++;
-                x = -(sqrt(size) / 2);
-            }
-        } else if (x >= sqrt(size)) {
+        if (x >= sqrt(size) / 2) {
             z++;
-            x = coords.x;
+            x = -(sqrt(size) / 2);
         }
+    }
+}
+
+void TileMaster::increment() {
+    Tile t{};
+    t.setup();
+    tiles.push_back(t);
+}
+
+void TileMaster::decrement() {
+    if (tiles.size() != 1) {
+        tiles.pop_back();
     }
 }

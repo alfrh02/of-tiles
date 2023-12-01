@@ -321,6 +321,18 @@ obj/linux64/Release/src/ofApp.o: \
  ../../../libs/openFrameworks/3d/of3dUtils.h \
  ../../../libs/openFrameworks/3d/ofCamera.h \
  ../../../libs/openFrameworks/3d/ofEasyCam.h \
+ /home/alfr/projects/code/cpp/openframeworks/addons/ofxGui/src/ofxGui.h \
+ /home/alfr/projects/code/cpp/openframeworks/addons/ofxGui/src/ofxToggle.h \
+ /home/alfr/projects/code/cpp/openframeworks/addons/ofxGui/src/ofxBaseGui.h \
+ /home/alfr/projects/code/cpp/openframeworks/addons/ofxGui/src/ofxSlider.h \
+ /home/alfr/projects/code/cpp/openframeworks/addons/ofxGui/src/ofxInputField.h \
+ /home/alfr/projects/code/cpp/openframeworks/addons/ofxGui/src/ofxGuiUtils.h \
+ /home/alfr/projects/code/cpp/openframeworks/addons/ofxGui/src/ofxSliderGroup.h \
+ /home/alfr/projects/code/cpp/openframeworks/addons/ofxGui/src/ofxGuiGroup.h \
+ /home/alfr/projects/code/cpp/openframeworks/addons/ofxGui/src/ofxButton.h \
+ /home/alfr/projects/code/cpp/openframeworks/addons/ofxGui/src/ofxLabel.h \
+ /home/alfr/projects/code/cpp/openframeworks/addons/ofxGui/src/ofxColorPicker.h \
+ /home/alfr/projects/code/cpp/openframeworks/addons/ofxGui/src/ofxPanel.h \
  /home/alfr/projects/code/cpp/openframeworks/apps/myApps/tiles/src/tile/tile.h \
  /home/alfr/projects/code/cpp/openframeworks/apps/myApps/tiles/src/tile/tileMaster.h
 /home/alfr/projects/code/cpp/openframeworks/apps/myApps/tiles/src/ofApp.h:
@@ -645,5 +657,17 @@ obj/linux64/Release/src/ofApp.o: \
 ../../../libs/openFrameworks/3d/of3dUtils.h:
 ../../../libs/openFrameworks/3d/ofCamera.h:
 ../../../libs/openFrameworks/3d/ofEasyCam.h:
+/home/alfr/projects/code/cpp/openframeworks/addons/ofxGui/src/ofxGui.h:
+/home/alfr/projects/code/cpp/openframeworks/addons/ofxGui/src/ofxToggle.h:
+/home/alfr/projects/code/cpp/openframeworks/addons/ofxGui/src/ofxBaseGui.h:
+/home/alfr/projects/code/cpp/openframeworks/addons/ofxGui/src/ofxSlider.h:
+/home/alfr/projects/code/cpp/openframeworks/addons/ofxGui/src/ofxInputField.h:
+/home/alfr/projects/code/cpp/openframeworks/addons/ofxGui/src/ofxGuiUtils.h:
+/home/alfr/projects/code/cpp/openframeworks/addons/ofxGui/src/ofxSliderGroup.h:
+/home/alfr/projects/code/cpp/openframeworks/addons/ofxGui/src/ofxGuiGroup.h:
+/home/alfr/projects/code/cpp/openframeworks/addons/ofxGui/src/ofxButton.h:
+/home/alfr/projects/code/cpp/openframeworks/addons/ofxGui/src/ofxLabel.h:
+/home/alfr/projects/code/cpp/openframeworks/addons/ofxGui/src/ofxColorPicker.h:
+/home/alfr/projects/code/cpp/openframeworks/addons/ofxGui/src/ofxPanel.h:
 /home/alfr/projects/code/cpp/openframeworks/apps/myApps/tiles/src/tile/tile.h:
 /home/alfr/projects/code/cpp/openframeworks/apps/myApps/tiles/src/tile/tileMaster.h:

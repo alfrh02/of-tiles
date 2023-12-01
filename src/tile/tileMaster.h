@@ -8,7 +8,9 @@ using namespace glm;
 class TileMaster {
     public:
         void setup(int tileNumber);
-        void draw(vec3 coords, bool centred);
+        void draw(vec3 coords);
+        void increment();
+        void decrement();
 
     private:
         vector<Tile> tiles;

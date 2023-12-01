@@ -32,7 +32,7 @@ void ofApp::draw(){
     ofEnableLighting();
     light.enable();
 
-    ofDrawGrid(1, 10, true, false, true, false);
+    //ofDrawGrid(1, 10, true, false, true, false);
 
     ofSetColor(33);
     tileMaster.draw(vec3(0, 0, 0));

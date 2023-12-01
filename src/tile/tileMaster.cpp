@@ -12,19 +12,30 @@ void TileMaster::draw(vec3 coords) {
     int size = tiles.size();
 
     int x = -(sqrt(size) / 2);
+    float y = 0;
     int z = x;
 
     for (int i = 0; i < size; i++) {
-        vec3 pos = vec3(x * TILE_SIZE, 0, z * TILE_SIZE);
+        // noise lol
+        y = ofNoise(vec2(x, z));
+        ofSetColor(y * 255);
+        y *= 2;
+
+        vec3 pos = vec3(x * TILE_SIZE, y, z * TILE_SIZE);
         if ((int)sqrt(size) % 2 == 1) {
-            pos = vec3(x * TILE_SIZE - (TILE_SIZE / 2), 0, z * TILE_SIZE - (TILE_SIZE / 2));
+            pos = vec3(x * TILE_SIZE - (TILE_SIZE / 2), y, z * TILE_SIZE - (TILE_SIZE / 2));
         }
 
-        //ofSetColor((255/25)*i);
-        ofSetColor(33);
-        if ((x % 2 || z % 2) && (x % 2 == false || z % 2 == 0)) {
-            ofSetColor(18);
-        }
+        // gradient
+        // ofSetColor((255/25)*i);
+
+        // ofSetColor(33);
+
+        // if ((x % 2 || z % 2) && (x % 2 == false || z % 2 == 0)) {
+        //     ofSetColor(18);
+        // }
+
+
         tiles[i].draw(pos);
 
         x++;

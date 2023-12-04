@@ -8,7 +8,7 @@ void TileMaster::setup(int tileNumber) {
     }
 }
 
-void TileMaster::draw(vec3 coords) {
+void TileMaster::draw(vec3 coords, float islandMargin) {
     int size = tiles.size();
 
     int x = -(sqrt(size) / 2);
@@ -16,25 +16,40 @@ void TileMaster::draw(vec3 coords) {
     int z = x;
 
     for (int i = 0; i < size; i++) {
-        // noise lol
+        // noise
         y = ofNoise(vec2(x, z));
-        ofSetColor(y * 255);
         y *= 2;
 
-        vec3 pos = vec3(x * TILE_SIZE, y, z * TILE_SIZE);
+
+        // centre the camera properly
+        // if the total amount of tiles is a square number, draw the tiles exactly in the centre of the scene
+        // otherwise draw it from the corner of the tile
+        vec3 pos = vec3(0, 0, 0);
+        float tempTileSize = TILE_SIZE + islandMargin;
         if ((int)sqrt(size) % 2 == 1) {
-            pos = vec3(x * TILE_SIZE - (TILE_SIZE / 2), y, z * TILE_SIZE - (TILE_SIZE / 2));
+            pos = vec3(
+                x * tempTileSize - (tempTileSize / 2),
+                y,
+                z * tempTileSize - (tempTileSize / 2)
+            );
+        } else {
+            pos = vec3(
+                x * tempTileSize,
+                y,
+                z * tempTileSize
+            );
         }
 
-        // gradient
+        // // gradient
         // ofSetColor((255/25)*i);
+        // // noise
+        // ofSetColor((y/2) * 255);
 
+        // // checkerboard pattern
         // ofSetColor(33);
-
         // if ((x % 2 || z % 2) && (x % 2 == false || z % 2 == 0)) {
         //     ofSetColor(18);
         // }
-
 
         tiles[i].draw(pos);
 
@@ -43,6 +58,15 @@ void TileMaster::draw(vec3 coords) {
             z++;
             x = -(sqrt(size) / 2);
         }
+    }
+}
+
+void TileMaster::setTileCount(int num) {
+    tiles.clear();
+    for (int i = 0; i < num; i++) {
+        Tile t{};
+        t.setup();
+        tiles.push_back(t);
     }
 }
 

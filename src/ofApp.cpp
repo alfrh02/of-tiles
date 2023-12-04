@@ -10,13 +10,15 @@ void ofApp::setup(){
     light.setAmbientColor(ofColor(75)); //ofFloatColor(0.3, 0.3, 0.3));
     light.setPosition(ofGetWidth() / 2,ofGetHeight() / 2, 500);
 
-    tileMaster.setup(28);
+    tileMaster.setup(16384);
 
     gui.setup();
 
-    gui.add(increaseButton.setup("Increase Tile Count", 16, 16));
-    gui.add(decreaseButton.setup("Decrease Tile Count", 16, 16));
-    //gui.add(inputField.setup(int, 32, 16));
+    gui.add(checkerboardButton.setup("Checkerboard", 16, 16));
+    gui.add(gradientButton.setup("Gradient", 16, 16));
+    gui.add(noiseButton.setup("Noise", 16, 16));
+    gui.add(tileCount.set("tileCount", 1, 0, 1024));
+    gui.add(islandMargin.set("islandMargin", 0, 0, 25));
 }
 
 //--------------------------------------------------------------
@@ -35,7 +37,8 @@ void ofApp::draw(){
     //ofDrawGrid(1, 10, true, false, true, false);
 
     ofSetColor(33);
-    tileMaster.draw(vec3(0, 0, 0));
+    tileMaster.draw(vec3(0, 0, 0), islandMargin);
+    tileMaster.setTileCount(tileCount);
 
     light.disable();
     ofDisableLighting();
@@ -47,12 +50,6 @@ void ofApp::draw(){
     ofDrawBitmapString(to_string(ofGetFrameRate()), ofGetWidth()/2, 20);
 
     gui.draw();
-    if (increaseButton) {
-        tileMaster.increment();
-    }
-    if (decreaseButton) {
-        tileMaster.decrement();
-    }
 }
 
 //--------------------------------------------------------------

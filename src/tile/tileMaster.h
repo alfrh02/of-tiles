@@ -8,7 +8,8 @@ using namespace glm;
 class TileMaster {
     public:
         void setup(int tileNumber);
-        void draw(vec3 coords);
+        void draw(vec3 coords, float islandMargin);
+        void setTileCount(int num);
         void increment();
         void decrement();
 

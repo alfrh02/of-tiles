@@ -33,10 +33,15 @@ class ofApp : public ofBaseApp{
 
 		TileMaster tileMaster;
 
+		enum tileDecor {Checkerboard, Gradient, Noise};
+
 		// gui
 		ofxPanel gui;
 
-		ofxButton increaseButton;
-		ofxButton decreaseButton;
-		//ofxInputField inputField;
+		ofxButton checkerboardButton;
+		ofxButton gradientButton;
+		ofxButton noiseButton;
+
+		ofParameter<float> islandMargin;
+		ofParameter<int> tileCount;
 };

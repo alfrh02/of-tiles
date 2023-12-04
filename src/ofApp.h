@@ -33,7 +33,7 @@ class ofApp : public ofBaseApp{
 
 		TileMaster tileMaster;
 
-		enum tileDecor {Checkerboard, Gradient, Noise};
+		tileDecor decor;
 
 		// gui
 		ofxPanel gui;
@@ -41,7 +41,9 @@ class ofApp : public ofBaseApp{
 		ofxButton checkerboardButton;
 		ofxButton gradientButton;
 		ofxButton noiseButton;
+		ofxButton harshNoiseButton;
 
 		ofParameter<float> islandMargin;
+		ofParameter<float> yLevel;
 		ofParameter<int> tileCount;
 };

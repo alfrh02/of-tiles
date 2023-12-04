@@ -1,14 +1,13 @@
 #include "tileMaster.h"
 
 void TileMaster::setup(int tileNumber) {
-    for (int i = 0; i < tileNumber; i++) {
-        Tile t{};
-        t.setup();
-        tiles.push_back(t);
-    }
+    setTileCount(tileNumber);
+
+    checkerboardOne = ofColor(255, 0, 255);
+    checkerboardTwo = ofColor(18);
 }
 
-void TileMaster::draw(vec3 coords, float islandMargin) {
+void TileMaster::draw(vec3 coords, float yLevel, float islandMargin, tileDecor decor) {
     int size = tiles.size();
 
     int x = -(sqrt(size) / 2);
@@ -17,9 +16,8 @@ void TileMaster::draw(vec3 coords, float islandMargin) {
 
     for (int i = 0; i < size; i++) {
         // noise
-        y = ofNoise(vec2(x, z));
+        y = ofNoise(vec2(x, z)) * yLevel;
         y *= 2;
-
 
         // centre the camera properly
         // if the total amount of tiles is a square number, draw the tiles exactly in the centre of the scene
@@ -40,16 +38,23 @@ void TileMaster::draw(vec3 coords, float islandMargin) {
             );
         }
 
-        // // gradient
-        // ofSetColor((255/25)*i);
-        // // noise
-        // ofSetColor((y/2) * 255);
-
-        // // checkerboard pattern
-        // ofSetColor(33);
-        // if ((x % 2 || z % 2) && (x % 2 == false || z % 2 == 0)) {
-        //     ofSetColor(18);
-        // }
+        switch(decor) {
+            case Checkerboard:
+                ofSetColor(checkerboardOne);
+                if ((x % 2 || z % 2) && (x % 2 == false || z % 2 == 0)) {
+                    ofSetColor(checkerboardTwo);
+                }
+                break;
+            case Gradient:
+                ofSetColor(((float)255 / size) * i);
+                break;
+            case Noise:
+                ofSetColor(ofNoise(vec2(x, z)) * 255);
+                break;
+            case HarshNoise:
+                ofSetColor(round(ofNoise(vec2(x, z))) * 255);
+                break;
+        }
 
         tiles[i].draw(pos);
 
@@ -67,17 +72,5 @@ void TileMaster::setTileCount(int num) {
         Tile t{};
         t.setup();
         tiles.push_back(t);
-    }
-}
-
-void TileMaster::increment() {
-    Tile t{};
-    t.setup();
-    tiles.push_back(t);
-}
-
-void TileMaster::decrement() {
-    if (tiles.size() != 1) {
-        tiles.pop_back();
     }
 }

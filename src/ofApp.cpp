@@ -11,19 +11,33 @@ void ofApp::setup(){
     light.setPosition(ofGetWidth() / 2,ofGetHeight() / 2, 500);
 
     tileMaster.setup(16384);
+    decor = Checkerboard;
 
     gui.setup();
 
     gui.add(checkerboardButton.setup("Checkerboard", 16, 16));
     gui.add(gradientButton.setup("Gradient", 16, 16));
     gui.add(noiseButton.setup("Noise", 16, 16));
+    gui.add(harshNoiseButton.setup("Harsh Noise", 16, 16));
     gui.add(tileCount.set("tileCount", 1, 0, 1024));
-    gui.add(islandMargin.set("islandMargin", 0, 0, 25));
+    gui.add(yLevel.set("yLevel", 0, 0, 32));
+    gui.add(islandMargin.set("islandMargin", 0, 0, 32));
 }
 
 //--------------------------------------------------------------
 void ofApp::update(){
-
+    if (checkerboardButton) {
+        decor = Checkerboard;
+    }
+    if (gradientButton) {
+        decor = Gradient;
+    }
+    if (noiseButton) {
+        decor = Noise;
+    }
+    if (harshNoiseButton) {
+        decor = HarshNoise;
+    }
 }
 
 //--------------------------------------------------------------
@@ -37,7 +51,7 @@ void ofApp::draw(){
     //ofDrawGrid(1, 10, true, false, true, false);
 
     ofSetColor(33);
-    tileMaster.draw(vec3(0, 0, 0), islandMargin);
+    tileMaster.draw(vec3(0, 0, 0), yLevel, islandMargin, decor);
     tileMaster.setTileCount(tileCount);
 
     light.disable();

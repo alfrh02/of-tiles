@@ -5,6 +5,10 @@
 using namespace glm;
 
 const int TILE_SIZE = 8;
+enum tileDecor : unsigned char
+{
+    Checkerboard, Gradient, Noise, HarshNoise
+};
 
 class Tile {
     public:

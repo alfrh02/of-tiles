@@ -16,8 +16,8 @@ void TileMaster::draw(vec3 coords, float yLevel, float islandMargin, tileDecor d
 
     for (int i = 0; i < size; i++) {
         // noise
-        y = ofNoise(vec2(x, z)) * yLevel;
-        y *= 2;
+        y = ofNoise(vec2(x, z));
+        y *= yLevel;
 
         // centre the camera properly
         // if the total amount of tiles is a square number, draw the tiles exactly in the centre of the scene

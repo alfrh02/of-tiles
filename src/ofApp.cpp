@@ -20,7 +20,7 @@ void ofApp::setup(){
     gui.add(noiseButton.setup("Noise", 16, 16));
     gui.add(harshNoiseButton.setup("Harsh Noise", 16, 16));
     gui.add(tileCount.set("tileCount", 1, 0, 1024));
-    gui.add(yLevel.set("yLevel", 0, 0, 32));
+    gui.add(yLevel.set("yLevel", 2, 1, 256));
     gui.add(islandMargin.set("islandMargin", 0, 0, 32));
 }
 
@@ -52,7 +52,9 @@ void ofApp::draw(){
 
     ofSetColor(33);
     tileMaster.draw(vec3(0, 0, 0), yLevel, islandMargin, decor);
-    tileMaster.setTileCount(tileCount);
+    if (tileCount) {
+        tileMaster.setTileCount(tileCount);
+    }
 
     light.disable();
     ofDisableLighting();

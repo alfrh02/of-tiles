@@ -66,6 +66,30 @@ void TileMaster::draw(vec3 coords, float yLevel, float islandMargin, tileDecor d
     }
 }
 
+void TileMaster::draw(unsigned short level[]) {
+    int size = sizeof(level) / sizeof(unsigned short);
+
+    int x = 0;
+    int z = 0;
+    int y = 0;
+    for (int i = 0; i < size; i++) {
+        cout << i << endl;
+        if (level[i] == 1) {
+            Tile t{};
+            t.setup();
+
+            vec3 pos = vec3(x * TILE_SIZE, y, z * TILE_SIZE);
+
+            t.draw(pos);
+        }
+        x++;
+        if (i == sqrt(size)) {
+            z++;
+            x = 0;
+        }
+    }
+}
+
 void TileMaster::setTileCount(int num) {
     tiles.clear();
     for (int i = 0; i < num; i++) {

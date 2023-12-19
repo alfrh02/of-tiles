@@ -35,6 +35,15 @@ class ofApp : public ofBaseApp{
 
 		tileDecor decor;
 
+		unsigned short level[6*6] = {
+			0, 0, 0, 0, 0, 0,
+			0, 1, 1, 1, 1, 0,
+			0, 1, 0, 0, 1, 0,
+			0, 1, 1, 0, 1, 0,
+			0, 0, 1, 1, 1, 1,
+			0, 1, 1, 1, 1, 1
+		};
+
 		// gui
 		ofxPanel gui;
 

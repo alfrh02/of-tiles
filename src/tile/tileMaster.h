@@ -9,6 +9,7 @@ class TileMaster {
     public:
         void setup(int tileNumber);
         void draw(vec3 coords, float yLevel, float islandMargin, tileDecor decor);
+        void draw(unsigned short level[]);
         void setTileCount(int num);
 
     private:

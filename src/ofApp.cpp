@@ -55,6 +55,7 @@ void ofApp::draw(){
     if (tileCount) {
         tileMaster.setTileCount(tileCount);
     }
+    // tileMaster.draw(level);
 
     light.disable();
     ofDisableLighting();
